@@ -1,13 +1,11 @@
 package optional;
+
 import java.util.ArrayList;
 
 public class DirtyWorms {
-	
+
 	public static void main(String[] args) {
 
-		class Stuff {}
-		class Worm extends Stuff {}
-		class Dirt extends Stuff {}
 		ArrayList<Stuff> stuffIFoundInTheYard = new ArrayList<Stuff>();
 		stuffIFoundInTheYard.add(new Worm());
 		stuffIFoundInTheYard.add(new Dirt());
@@ -18,10 +16,25 @@ public class DirtyWorms {
 
 		System.out.println(stuffIFoundInTheYard.size());
 
-		/* TODO: Clean out the dirt but keep the delicious worms. */ 
+		/* TODO: Clean out the dirt but keep the delicious worms. */
 
-		System.out.println(stuffIFoundInTheYard.size());	//should be 2
+		for (int i = 0; i < stuffIFoundInTheYard.size(); i++) {
+			if (stuffIFoundInTheYard.get(i).getClass().getSimpleName().equals("Dirt")) {
+				stuffIFoundInTheYard.remove(i);
+				i--;
+			}
+		}
+
+		System.out.println(stuffIFoundInTheYard.size()); // should be 2
 
 	}
 }
 
+class Stuff {
+}
+
+class Worm extends Stuff {
+}
+
+class Dirt extends Stuff {
+}
